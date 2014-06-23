@@ -1,0 +1,125 @@
+---
+title: "My Thirteen days at DataRobot"
+author: "Yi Li"
+date: "June 24, 2014"
+output:
+  ioslides_presentation:
+    logo: logo4.png
+  beamer_presentation: default
+---
+
+## Repository Checklists
+<div class="columns-2">
+
+- LDA&QDA
+- Polynomial Regression
+- Kernel Smoothing
+- ARMA model
+- R Markdown
+- Naive Bayes
+
+![Image](logo.png)
+</div>
+
+## LDA & QDA
+
+<div class="centered">
+![Image](lda.png)
+</div>
+
+## LDA & QDA
+
+- Classification method.
+- This is my first repo, in which I wrote a lot of math.
+- Thanks for **Dallin** who ask me to provide some **hand-waving** description.
+
+<div class="centered">
+![Image](handwave.gif)
+</div>
+
+## Polynomial Regression
+
+<div class="centered">
+![Image](poly.png)
+</div>
+
+## Kernel Smoothing
+
+<div class="centered">
+![Image](kernel.png)
+</div>
+
+## ARMA model
+
+```{r echo = F, message = F, cache = F,include=FALSE}
+options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+knitr::opts_chunk$set(comment = NA, results ='asis', tidy = F, message = F)
+```
+
+```{r fig0, echo=FALSE}
+require(rCharts)
+n = 100
+# Simulate the AR(1) model
+x1 = 0
+AR1=0
+for(i in -50:n){
+  a = rnorm(1)
+  x1 = 0.5*x1+a
+  if(i>1)
+    AR1[i]=x1
+}
+# Simulate the MA(2) model
+x1=0
+a2=0
+a3=0
+MA2=0
+for(i in -50:n){
+  a1=rnorm(1)
+  x1=a1+0.65*a2+0.24*a3
+  a3=a2
+  a2=a1
+  if(i>0)
+    MA2[i]=x1
+}
+# Plot the two series
+Time=1:n
+myTS=data.frame(Time,AR1,MA2)
+m1 <- mPlot(x="Time", y = c("AR1","MA2"), type = 'Line', data = myTS ,parseTime=FALSE)
+m1$set(pointSize = 0, lineWidth = 1)
+m1$print('fig0', include_assets = TRUE, cdn = TRUE)
+```
+
+- Start to learn some interactive graphing package, like **rCharts**.
+
+## R Markdown
+
+<div class="centered">
+<img src="rmd.png" height="200px"/>
+</div>
+
+- Used for creating dynamic documentation
+- This presentation was made with R Markdown.
+- R Markdown v2 was released last week. 
+
+## Naive Bayes
+
+After struggling with Python for two days...
+
+<div class="centered">
+<img src="python.png" />
+</div>
+
+## Naive Bayes
+
+I finished my first python program
+
+<img src="ipnb.png" height="400px"/>
+
+---
+
+<div class="centered">
+Thank you all for your help!
+
+<img src="logo4.png" height="400px"/>
+</div>
+
